@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40e359d8e3f3ddc4a3d831e0c4ce6050",
+    "content-hash": "591fab2bdae529d38797e0e107cc4bec",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2165,6 +2165,63 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "rennypoz/eavquent",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rennypoz/Eavquent.git",
+                "reference": "6110131e1e2a4aa815eebae20d09ef08f4577c7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rennypoz/Eavquent/zipball/6110131e1e2a4aa815eebae20d09ef08f4577c7c",
+                "reference": "6110131e1e2a4aa815eebae20d09ef08f4577c7c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.6",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.8.*",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rennypoz\\Eavquent\\EavquentServiceProvider"
+                    ],
+                    "aliases": {
+                        "Eavquent": "Rennypoz\\Eavquent\\EavquentFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rennypoz\\Eavquent\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Renato Pozzi",
+                    "email": "renato.pozzi.dev@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Package for use an EAV table with Eloquent.",
+            "homepage": "https://github.com/rennypoz/eavquent",
+            "keywords": [
+                "eavquent",
+                "rennypoz"
+            ],
+            "time": "2019-09-19T21:36:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
