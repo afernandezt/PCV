@@ -15,6 +15,8 @@ class CreateWorkerinstsTable extends Migration
     {
         Schema::create('workerinsts', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
             $table->timestamps();
         });
     }
