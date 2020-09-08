@@ -10,3 +10,9 @@
 // Adminlte
 @import '~admin-lte/dist/css/adminlte.css';
 
+//fontAwesome
+$fa-font-path:"../webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+

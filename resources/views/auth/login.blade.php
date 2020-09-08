@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Log in</title>
+  <title>Pre-Concreto de Veracruz</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -18,6 +18,7 @@
     <div class="card-body login-card-body">
 
       <form method="POST" action="{{ route('login') }}">
+        @csrf
         <div class="input-group mb-3">
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo">
 
@@ -61,7 +62,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
+        <a href="">I forgot my password</a>
       </p>
     </div>
     <!-- /.login-card-body -->
