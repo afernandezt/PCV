@@ -6,7 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-
+                @foreach ($trabajadores as $s)
+                    <h1>{{$s->id}}</h1>  
+                @endforeach
+                {{$us->id}}
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

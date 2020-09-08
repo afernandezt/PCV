@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\worker;
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -13,8 +15,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        //Auth::loginUsingId(1);
+        //$this->middleware('auth');
+        Auth::loginUsingId(1);
     }
 
     /**
@@ -24,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {        
-        return view('home');
+        $traj = new Worker();
+        $trabajadores = User::all();
+        $us = Auth::user();
+        return view('home', compact('trabajadores','us'));
     }
 }
