@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
+        @yield('style')
     </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app">
@@ -164,13 +165,13 @@
                       <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                          Dashboard
+                          Inicio
                           <i class="right fas fa-angle-left"></i>
                         </p>
                       </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
-                          <a href="" class="nav-link active">
+                        <a href="{{ route('workers')}}" class="nav-link active">
                             <i class="fas fa-circle nav-icon"></i>
                             <p>Enfermos</p>
                           </a>
@@ -206,6 +207,6 @@
         
         <!-- jQuery -->
         <script src="{{asset('js/app.js')}}"></script>
-
+        @yield('scripts')
   </body>
 </html>
