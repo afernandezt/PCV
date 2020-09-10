@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+      <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         @yield('style')
+        
     </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app">
@@ -122,5 +124,6 @@
         <!-- jQuery -->
         <script src="{{asset('js/app.js')}}"></script>
         @yield('scripts')
+        @yield('subscripts')
   </body>
 </html>

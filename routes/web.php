@@ -21,3 +21,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/workers', 'WorkerController@index')->name('workers');
+
+//ajax
+Route::post('/saveworker', 'WorkerController@saveWorker')->name('saveWorker');

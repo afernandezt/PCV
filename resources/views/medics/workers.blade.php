@@ -2,6 +2,8 @@
 @section('style')
     <link rel="stylesheet" href="{{asset('scripts/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('scripts/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('scripts/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('scripts/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}"> 
 @endsection
 @section('content')
     <section class="content-header">
@@ -54,72 +56,20 @@
           </div>
         </div>
     </section>
-
-    <div class="modal fade" id="modal-default">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Agregar Trabajador</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form role="form" id="quickForm">
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="name">Nombre Completo</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombre Completo">
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <label for="puesto">Puesto</label>
-                      <input type="text" name="puesto" class="form-control" id="puesto" placeholder="puesto">
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="nomina">Numero de Nomina</label>
-                      <input type="text" name="nomina" class="form-control" id="nomina" placeholder="nomina">
-                    </div>
-                  </div>                  
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <label for="medico">medico</label>
-                      <input type="text" name="medico" class="form-control" id="medico" placeholder="medico">
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="institucion">institucion</label>
-                      <input type="text" name="institucion" class="form-control" id="institucion" placeholder="institucion">
-                    </div>
-                  </div>                  
-                </div>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer text-right">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
+@include('Modals.addWorker');
 @endsection
-
 @section('scripts')
     <!-- DataTables -->
     <script src="{{asset('scripts/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('scripts/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('scripts/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('scripts/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <!-- Validation jquery -->
     <script src="{{asset('scripts/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('scripts/jquery-validation/additional-methods.min.js')}}"></script>
+    <script src="{{asset('scripts/select2/js/select2.full.min.js')}}"></script>     
     <script>
-        $(function () {
+        $(function () {            
             $("#enf-ver").DataTable({
             "responsive": true,
             "autoWidth": false,
