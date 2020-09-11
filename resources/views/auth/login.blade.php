@@ -7,19 +7,21 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+  <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
     <b>Pre</b>Concreto
   </div>
+  <img class="image" src="{{asset('images/logopcv.png')}}" alt="">
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-
+    
       <form method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 ">
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo">
 
             @error('email')
@@ -71,5 +73,6 @@
 <!-- /.login-box -->
 
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/login.js')}}"></script>
 </body>
 </html>
