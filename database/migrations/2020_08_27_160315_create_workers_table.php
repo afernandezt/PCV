@@ -19,7 +19,6 @@ class CreateWorkersTable extends Migration
             $table->integer('zone');
             $table->integer('institution');
             $table->string('medic');
-            $table->string('payroll');
             $table->string('name');
             $table->timestamps();
         });

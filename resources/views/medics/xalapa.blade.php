@@ -13,13 +13,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 4.0
-          </td>
-          <td>Win 95+</td>
-        </tr>
+          @foreach ($xal_work as $xal)
+          <tr>
+            <td>{{$xal->nomina}}</td>
+            <td>{{$xal->name}}</td>
+            <td>{{$xal->job}}</td>
+            <td>
+              <a class="btn btn-app">
+                <i class="fas fa-edit"></i>
+              </a>
+            </td>
+          </tr>
+        @endforeach
         </tbody>
         <tfoot>
         <tr>

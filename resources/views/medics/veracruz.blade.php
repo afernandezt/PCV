@@ -14,14 +14,23 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 4.0
-          </td>
-          <td>Win 95+</td>
-          <td>Win 95+</td>
-        </tr>
+          @foreach ($ver_work as $ver)
+          <tr>
+            <td>{{$ver->nomina}}</td>
+            <td>{{$ver->name}}</td>
+            <td>{{$ver->job}}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn  btn-default">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn  btn-default">
+                  <i class="fas fa-edit"></i>
+                </button>
+              </div>              
+            </td>
+          </tr>
+        @endforeach
         </tbody>
         <tfoot>
         <tr>

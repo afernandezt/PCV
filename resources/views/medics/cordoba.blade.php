@@ -10,16 +10,23 @@
           <th>Clave</th>
           <th>Nombre</th>
           <th>Puesto</th>
+          <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 4.0
-          </td>
-          <td>Win 95+</td>
-        </tr>
+        @foreach ($cor_work as $cor)
+          <tr>
+            <td>{{$cor->nomina}}</td>
+            <td>{{$cor->name}}</td>
+            <td>{{$cor->job}}</td>
+            <td>
+              <a class="btn btn-app">
+                <i class="fas fa-edit"></i> Edit
+              </a>
+            </td>
+          </tr>
+        @endforeach
+        
         </tbody>
         <tfoot>
         <tr>
