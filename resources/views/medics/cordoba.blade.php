@@ -18,7 +18,7 @@
           <tr>
             <td>{{$cor->nomina}}</td>
             <td>{{$cor->name}}</td>
-            <td>{{$cor->job}}</td>
+            <td>{{$cor->getJob->job}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn  btn-default">

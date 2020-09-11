@@ -18,7 +18,7 @@
           <tr>
             <td>{{$xal->nomina}}</td>
             <td>{{$xal->name}}</td>
-            <td>{{$xal->job}}</td>
+            <td>{{$xal->getJob->job}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn  btn-default">

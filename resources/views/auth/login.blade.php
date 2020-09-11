@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="">
+  <b>Pre Concreto de Veracruz </b>
 <div class="login-box">
   <div class="login-logo">
-    <b>Pre</b>Concreto
+    <!--<b>Pre</b>Concreto de Veracruz-->
+    <img class="image" src="{{asset('images/logopcv.png')}}" alt="">
   </div>
-  <img class="image" src="{{asset('images/logopcv.png')}}" alt="">
+  
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
@@ -50,21 +52,23 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            
+          <div class="col-md-12">
+            <a href="">Olvide mi Contraseña</a>
           </div>
+        </div>
+        <div class="row">
+      
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
       <!-- /.social-auth-links -->
-
       <p class="mb-1">
-        <a href="">I forgot my password</a>
+       
       </p>
     </div>
     <!-- /.login-card-body -->

@@ -17,6 +17,7 @@ class WorkerController extends Controller
         $cor_work = Worker::where('zone',2)->get();
         $xal_work = Worker::where('zone',3)->get();
         return view('medics.workers', compact('zona','ver_work','cor_work','xal_work'));
+    
     }
     public function saveWorker(Request $request){
             $worker = new Worker();
