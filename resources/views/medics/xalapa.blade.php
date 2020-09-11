@@ -10,6 +10,7 @@
           <th>Clave</th>
           <th>Nombre</th>
           <th>Puesto</th>
+          <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -19,9 +20,14 @@
             <td>{{$xal->name}}</td>
             <td>{{$xal->job}}</td>
             <td>
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i>
-              </a>
+              <div class="btn-group">
+                <button type="button" class="btn  btn-default">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn  btn-default">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>              
             </td>
           </tr>
         @endforeach
@@ -31,6 +37,7 @@
           <th>Clave</th>
           <th>Nombre</th>
           <th>Puesto</th>
+          <th>Acciones</th>
         </tr>
         </tfoot>
       </table>

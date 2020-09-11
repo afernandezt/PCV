@@ -18,14 +18,14 @@
           <tr>
             <td>{{$ver->nomina}}</td>
             <td>{{$ver->name}}</td>
-            <td>{{$ver->job}}</td>
+            <td>{{$ver->getJob->job}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn  btn-default">
                   <i class="fas fa-edit"></i>
                 </button>
                 <button type="button" class="btn  btn-default">
-                  <i class="fas fa-edit"></i>
+                  <i class="fas fa-trash-alt"></i>
                 </button>
               </div>              
             </td>
