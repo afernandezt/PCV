@@ -18,7 +18,7 @@
           <tr>
             <td>{{$ver->nomina}}</td>
             <td>{{$ver->name}}</td>
-            <td>{{$ver->getJob->job}}</td>
+            <td>{{$ver->getJob->puesto}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn  btn-default">

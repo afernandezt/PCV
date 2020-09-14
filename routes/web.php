@@ -20,7 +20,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+//Trabajadores
+Route::post('/workers/{id}', 'WorkerController@show')->name('showWorker');
+Route::post('/workers/save', 'WorkerController@saveWorker')->name('saveWorker');
+Route::get('/workers/add', 'WorkerController@add')->name('addWorker');
 Route::get('/workers', 'WorkerController@index')->name('workers');
 
 //ajax
-Route::post('/saveworker', 'WorkerController@saveWorker')->name('saveWorker');
+//Route::post('/saveworker', 'WorkerController@saveWorker')->name('saveWorker');

@@ -8,6 +8,6 @@ use App\BaseStatus;
 class worker extends Model
 {
     public function getJob(){
-        return $this->hasOne(workerjob::class,'id','job');
+        return $this->hasOne(w_puesto::class,'id','job');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkerjobsTable extends Migration
+class CreateWPuestosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateWorkerjobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('workerjobs', function (Blueprint $table) {
+        Schema::create('w_puestos', function (Blueprint $table) {
             $table->id();
-            $table->string('job');
+            $table->string('puesto');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateWorkerjobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workerjobs');
+        Schema::dropIfExists('w_puestos');
     }
 }

@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Worker;
 use App\Models\Zone;
+use App\Models\w_puesto;
+use App\Models\w_alergia;
+use App\Models\w_comorbidad;
+use App\Models\w_medical_inst;
+use App\Models\w_medico;
+use App\Models\w_vacuna;
 
 class WorkerController extends Controller
 {
@@ -12,11 +18,10 @@ class WorkerController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        $zona = Zone::all();
         $ver_work = Worker::where('zone',1)->get();
         $cor_work = Worker::where('zone',2)->get();
         $xal_work = Worker::where('zone',3)->get();
-        return view('medics.workers', compact('zona','ver_work','cor_work','xal_work'));
+        return view('medics.workers', compact('ver_work','cor_work','xal_work'));
     
     }
     public function saveWorker(Request $request){
@@ -28,5 +33,12 @@ class WorkerController extends Controller
             $worker->nomina = $request->medi;
             $worker->name = $request->nomina;
             $worker->save();
+    }
+    public function add(){
+        $zona = Zone::all();
+        $puesto = w_puesto::all();
+        $inst_med = w_medical_inst::all();
+        $medico = w_medico::all();
+        return view('medics.addWorker', compact('zona','puesto','inst_med','medico'));
     }
 }
