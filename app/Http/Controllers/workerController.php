@@ -25,14 +25,38 @@ class WorkerController extends Controller
     
     }
     public function saveWorker(Request $request){
-            $worker = new Worker();
+        dd($request);
+            /*$worker = new Worker();
             $worker->job = $request->puesto;
             $worker->zone = $request->zona;
             $worker->institution = $request->inst;
             $worker->medic = $request->medi;
             $worker->nomina = $request->medi;
             $worker->name = $request->nomina;
-            $worker->save();
+            $worker->save();*/
+
+            /*
+             //Save Gallery
+            if($request->galerie != ''){
+                $photos = explode(',',$request->galerie);
+
+                foreach($photos as $photo){
+                    $temp_path = storage_path('tmp/uploads/'.$photo);
+                    $new_path = public_path('rooms/uploads/'.$room->id);
+                    if (!file_exists($new_path)) {
+                        mkdir($new_path, 0777, true);
+                    }
+                    rename($temp_path, $new_path.'/'.$photo);
+                    if(file_exists($new_path.'/'.$photo)){
+                        $image = new RoomImages;
+                        $image->file_name = $photo;
+                        $image->room_id = $room->id;
+                        $image->save();
+                    }
+
+                }
+            }
+            */
     }
     public function add(){
         $zona = Zone::all();
@@ -40,5 +64,16 @@ class WorkerController extends Controller
         $inst_med = w_medical_inst::all();
         $medico = w_medico::all();
         return view('medics.addWorker', compact('zona','puesto','inst_med','medico'));
+    }
+    public function galery_temperal(Request $request){
+        $path = storage_path('tmp/uploads');
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $file = $request->file('file');
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+        $file->move($path, $name);
+
+        return $name;
     }
 }

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('style')
 <link rel="stylesheet" href="{{asset('scripts/select2/css/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('scripts/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}"> 
+    <link rel="stylesheet" href="{{asset('scripts/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('scripts/dropzone/dropzone.min.css')}}"> 
 @endsection
 @section('content')
 <section class="content-header">
@@ -24,7 +25,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-            <form role="form" id="quickForm">
+        <form action="{{route('saveWorker')}}" method="post"  enctype="multipart/form-data" role="form" id="addworker">
+          @csrf
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
@@ -65,7 +67,7 @@
                      <div class="col-sm-4">
                       <div class="form-group">
                         <label for="name">Covid</label>
-                        <select class="form-control select2" id="covid"  placeholder="covid" style="width: 100%;">
+                        <select class="form-control" id="covid"  placeholder="covid" style="width: 100%;">
                          <option value="0">Negativo</option>
                          <option value="1">Positivo</option>
                         </select>
@@ -75,7 +77,7 @@
                     @include('medics.enfermo')
                 </div>
                 
-                <button type="button" id="save" class="btn btn-primary">Submit</button>
+                <button type="submit" id="save" class="btn btn-primary">Submit</button>
               </form>
         </div>
       </div>
@@ -87,21 +89,29 @@
     <script src="{{asset('scripts/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('scripts/jquery-validation/additional-methods.min.js')}}"></script>
     <script src="{{asset('scripts/select2/js/select2.full.min.js')}}"></script>  
+    <script src="{{asset('scripts/dropzone/dropzone.min.js')}}"></script>  
 <script>
      $(document).ready(function(){
         $('.select2').select2({
             theme: 'bootstrap4'
         });
-        $('#quickForm').validate({
+        $('#addworker').validate({
               rules: {
                 name: {
                   required: true,
                 },
-                password: {
+                nomina: {
                   required: true,
                   minlength: 5
                 },
-                terms: {
+                puesto: {
+                  required: true
+                },
+                zona: {
+                  required: true,
+                  minlength: 5
+                },
+                covid: {
                   required: true
                 },
               },
@@ -129,5 +139,27 @@
               }
             });
      });
+</script>
+<script>
+  Dropzone.autoDiscover = false;
+  $(document).ready(function(){
+    $(".dropzone").dropzone({
+      maxFiles: 2000,
+      url: "{{route('temperal_galery')}}",
+      acceptedFiles: "image/jpeg,image/png,image/gif",
+      headers: {
+          'X-CSRF-TOKEN': "{{ csrf_token() }}"
+      },
+      success: function (file, response) {
+          console.log(response);
+          console.log(file);
+          oldValue = $('.input-galery').val();
+          var arr = oldValue === "" ? [] : oldValue.split(',');
+          arr.push(response);
+          var newValue = arr.join(',');
+          jQuery(".input-galery").val(newValue);          
+      }
+  })
+  });
 </script>
 @endsection
