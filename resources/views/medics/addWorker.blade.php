@@ -46,7 +46,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                             <label for="puesto">Puesto</label>
-                            <select class="form-control select2" id="puesto"  placeholder="Puesto" style="width: 100%;">
+                            <select class="form-control select2" id="puesto" name="puesto" placeholder="Puesto" style="width: 100%;">
                               @foreach ($puesto as $p)
                                 <option value="{{$p->id}}">{{$p->puesto}}</option>
                               @endforeach
@@ -57,7 +57,7 @@
                       <div class="col-sm-4">
                         <div class="form-group">
                           <label for="name">Zona</label>
-                          <select class="form-control select2" id="zona"  placeholder="Zona" style="width: 100%;">
+                          <select class="form-control select2" id="zona" name="zona"  placeholder="Zona" style="width: 100%;">
                             @foreach ($zona as $z)
                               <option value="{{$z->id}}">{{$z->name}}</option>
                             @endforeach
@@ -77,7 +77,7 @@
                     @include('medics.enfermo')
                 </div>
                 
-                <button type="submit" id="save" class="btn btn-primary">Submit</button>
+                <button type="submit" id="save" class="btn">Submit</button>
               </form>
         </div>
       </div>
@@ -109,7 +109,6 @@
                 },
                 zona: {
                   required: true,
-                  minlength: 5
                 },
                 covid: {
                   required: true
@@ -141,8 +140,10 @@
      });
 </script>
 <script>
+  
   Dropzone.autoDiscover = false;
   $(document).ready(function(){
+    console.log($("#save").attr("class"));
     $(".dropzone").dropzone({
       maxFiles: 2000,
       url: "{{route('temperal_galery')}}",

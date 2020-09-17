@@ -11,6 +11,8 @@ use App\Models\w_comorbidad;
 use App\Models\w_medical_inst;
 use App\Models\w_medico;
 use App\Models\w_vacuna;
+use App\Models\w_documents;
+use App\Models\w_opt_detail;
 
 class WorkerController extends Controller
 {
@@ -25,45 +27,74 @@ class WorkerController extends Controller
     
     }
     public function saveWorker(Request $request){
-        dd($request);
-            /*$worker = new Worker();
-            $worker->job = $request->puesto;
-            $worker->zone = $request->zona;
+        //dd($request);
+        $worker = new Worker();
+        $worker->job = $request->puesto;
+        $worker->zone = $request->zona;
+        $worker->name = $request->name;        
+        if(isset($request->medico)){
+            $worker->medic = $request->medico;
+        }
+        if(isset($request->inst)){
             $worker->institution = $request->inst;
-            $worker->medic = $request->medi;
-            $worker->nomina = $request->medi;
-            $worker->name = $request->nomina;
-            $worker->save();*/
-
-            /*
-             //Save Gallery
-            if($request->galerie != ''){
-                $photos = explode(',',$request->galerie);
-
-                foreach($photos as $photo){
-                    $temp_path = storage_path('tmp/uploads/'.$photo);
-                    $new_path = public_path('rooms/uploads/'.$room->id);
-                    if (!file_exists($new_path)) {
-                        mkdir($new_path, 0777, true);
-                    }
-                    rename($temp_path, $new_path.'/'.$photo);
-                    if(file_exists($new_path.'/'.$photo)){
-                        $image = new RoomImages;
-                        $image->file_name = $photo;
-                        $image->room_id = $room->id;
-                        $image->save();
-                    }
-
+        }
+        $worker->save();
+        //comorbidad
+        if($request->comorbidad){
+            foreach ($request->comorbidad as $comorbid) {
+                $comb = new w_comorbidad();
+                $comb->comorbidad = $comorbid;
+                $comb->id_worker = $worker->id;
+                $comb->save();
+            }
+        }
+        //vacunas
+        if($request->alergias){
+            foreach ($request->vacunas as $vacuna) {
+                $vac = new w_vacuna();
+                $vac->vacuna = $vacuna;
+                $vac->id_worker = $worker->id;
+                $vac->save();
+            }
+        }
+        //alergias
+        if($request->alergias){
+            foreach ($request->alergias as $alerg) {
+                $aler = new w_alergia();
+                $comb->alergia = $alerg;
+                $comb->id_worker = $worker->id;
+                $comb->save();
+            }
+        }
+        //Save Gallery
+        if($request->galerie != ''){
+            $photos = explode(',',$request->galerie);
+            foreach($photos as $photo){
+                $temp_path = storage_path('tmp/uploads/'.$photo);
+                $new_path = public_path('workers/uploads/'.$worker->id);
+                if (!file_exists($new_path)) {
+                    mkdir($new_path, 0777, true);
+                }
+                rename($temp_path, $new_path.'/'.$photo);
+                if(file_exists($new_path.'/'.$photo)){
+                    $doc = new w_documents;
+                    $doc->route = $photo;
+                    $doc->id_worker = $worker->id;
+                    $doc->save();
                 }
             }
-            */
+        }
+            
     }
     public function add(){
         $zona = Zone::all();
         $puesto = w_puesto::all();
         $inst_med = w_medical_inst::all();
         $medico = w_medico::all();
-        return view('medics.addWorker', compact('zona','puesto','inst_med','medico'));
+        $comorbidad = w_opt_detail::where("id_entidad",1)->get();
+        $vacunas = w_opt_detail::where("id_entidad",2)->get();
+        $alergias = w_opt_detail::where("id_entidad",3)->get();
+        return view('medics.addWorker', compact('zona','puesto','inst_med','medico','comorbidad','vacunas','alergias'));
     }
     public function galery_temperal(Request $request){
         $path = storage_path('tmp/uploads');
