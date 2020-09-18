@@ -10,25 +10,14 @@
           <th>Clave</th>
           <th>Nombre</th>
           <th>Puesto</th>
-          <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
           @foreach ($xal_work as $xal)
           <tr>
             <td>{{$xal->nomina}}</td>
-            <td>{{$xal->name}}</td>
+            <td><a href="/workers/show/{{$xal->id}}">{{$xal->name}}</a></td>
             <td>{{$xal->getJob->job}}</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn  btn-default">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="btn  btn-default">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>              
-            </td>
           </tr>
         @endforeach
         </tbody>
@@ -37,7 +26,6 @@
           <th>Clave</th>
           <th>Nombre</th>
           <th>Puesto</th>
-          <th>Acciones</th>
         </tr>
         </tfoot>
       </table>

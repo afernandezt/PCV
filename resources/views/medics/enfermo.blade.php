@@ -2,7 +2,7 @@
     <input type="hidden" class='input-galery' name="galerie" value="">
     <h6>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-        <i class="fas fa-plus"></i> Enfermo
+        <i class="fas fa-plus"></i> Detalles
         </a>
     </h6>
     <div id="collapseOne" class="panel-collapse collapse in">
@@ -12,8 +12,9 @@
                 <div class="form-group">
                     <label for="insti">institucion</label>
                     <select class="form-control select2" id="insti" name="inst" style="width: 100%;">
-                        @foreach ($inst_med as $i)
-                        <option value="{{$i->id}}">{{$i->instis}}</option>
+                        <option value="">Seleccione una Institución</option>
+                        @foreach ($inst_med as $i)                        
+                            <option value="{{$i->id}}">{{$i->instis}}</option>
                         @endforeach                                         
                     </select>
                 </div>
@@ -22,9 +23,10 @@
                 <div class="form-group">
                     <label for="medico">medico</label>
                     <select class="form-control select2" id="medico" name="medico" style="width: 100%;">
-                    @foreach ($medico as $m)
-                        <option value="{{$m->id}}">{{$m->medico}}</option>
-                    @endforeach                                     
+                        <option value="">Seleccione un Medico</option>
+                        @foreach ($medico as $m)
+                            <option value="{{$m->id}}">{{$m->medico}}</option>
+                        @endforeach                                     
                     </select>
                 </div>
             </div>                      

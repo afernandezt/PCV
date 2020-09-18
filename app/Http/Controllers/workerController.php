@@ -11,7 +11,7 @@ use App\Models\w_comorbidad;
 use App\Models\w_medical_inst;
 use App\Models\w_medico;
 use App\Models\w_vacuna;
-use App\Models\w_documents;
+use App\Models\w_document;
 use App\Models\w_opt_detail;
 
 class WorkerController extends Controller
@@ -31,7 +31,10 @@ class WorkerController extends Controller
         $worker = new Worker();
         $worker->job = $request->puesto;
         $worker->zone = $request->zona;
-        $worker->name = $request->name;        
+        $worker->name = $request->name;  
+        $worker->nomina = $request->nomina;
+        $worker->direccion = $request->direccion;  
+        $worker->edad = $request->edad;     
         if(isset($request->medico)){
             $worker->medic = $request->medico;
         }
@@ -61,9 +64,9 @@ class WorkerController extends Controller
         if($request->alergias){
             foreach ($request->alergias as $alerg) {
                 $aler = new w_alergia();
-                $comb->alergia = $alerg;
-                $comb->id_worker = $worker->id;
-                $comb->save();
+                $aler->alergia = $alerg;
+                $aler->id_worker = $worker->id;
+                $aler->save();
             }
         }
         //Save Gallery
@@ -71,19 +74,20 @@ class WorkerController extends Controller
             $photos = explode(',',$request->galerie);
             foreach($photos as $photo){
                 $temp_path = storage_path('tmp/uploads/'.$photo);
-                $new_path = public_path('workers/uploads/'.$worker->id);
+                $new_path = public_path('workers/'.$worker->id);
                 if (!file_exists($new_path)) {
                     mkdir($new_path, 0777, true);
                 }
                 rename($temp_path, $new_path.'/'.$photo);
                 if(file_exists($new_path.'/'.$photo)){
-                    $doc = new w_documents;
+                    $doc = new w_document;
                     $doc->route = $photo;
                     $doc->id_worker = $worker->id;
                     $doc->save();
                 }
             }
         }
+        return redirect('/workers/show/'.$worker->id);
             
     }
     public function add(){
@@ -95,6 +99,13 @@ class WorkerController extends Controller
         $vacunas = w_opt_detail::where("id_entidad",2)->get();
         $alergias = w_opt_detail::where("id_entidad",3)->get();
         return view('medics.addWorker', compact('zona','puesto','inst_med','medico','comorbidad','vacunas','alergias'));
+    }
+    public function show($id){
+        $trabajador = Worker::where('id',$id)->get()->first();
+        $vacunas = w_vacuna::where('id_worker',$id)->get();
+        $comorbidad = w_comorbidad ::where('id_worker',$id)->get();
+        $alergias = w_alergia::where('id_worker',$id)->get();
+        return view('medics.show',compact('trabajador','vacunas','comorbidad','alergias'));
     }
     public function galery_temperal(Request $request){
         $path = storage_path('tmp/uploads');
