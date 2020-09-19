@@ -2,7 +2,7 @@
     <input type="hidden" class='input-galery' name="galerie" value="">
     <h6>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-        <i class="fas fa-plus"></i> Enfermo
+        <i class="fas fa-plus"></i> Detalles
         </a>
     </h6>
     <div id="collapseOne" class="panel-collapse collapse in">
@@ -12,8 +12,9 @@
                 <div class="form-group">
                     <label for="insti">institucion</label>
                     <select class="form-control select2" id="insti" name="inst" style="width: 100%;">
-                        @foreach ($inst_med as $i)
-                        <option value="{{$i->id}}">{{$i->instis}}</option>
+                        <option value="">Seleccione una Institución</option>
+                        @foreach ($inst_med as $i)                        
+                            <option value="{{$i->id}}">{{$i->instis}}</option>
                         @endforeach                                         
                     </select>
                 </div>
@@ -22,9 +23,10 @@
                 <div class="form-group">
                     <label for="medico">medico</label>
                     <select class="form-control select2" id="medico" name="medico" style="width: 100%;">
-                    @foreach ($medico as $m)
-                        <option value="{{$m->id}}">{{$m->medico}}</option>
-                    @endforeach                                     
+                        <option value="">Seleccione un Medico</option>
+                        @foreach ($medico as $m)
+                            <option value="{{$m->id}}">{{$m->medico}}</option>
+                        @endforeach                                     
                     </select>
                 </div>
             </div>                      
@@ -33,42 +35,31 @@
             <div class="col-md-4">
                 <div class="form-grup">
                     <h5>Comorbilidad</h5>
-                    <select class="select2" multiple="multiple" name="comorbidad" data-placeholder="Select a State" style="width: 100%;">
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                    <select class="select2" multiple="multiple" name="comorbidad[]" data-placeholder="Select a State" style="width: 100%;">
+                        @foreach ($comorbidad as $com)
+                            <option value="{{$com->id}}">{{$com->valor}}</option>
+                        @endforeach
                       </select>
                 </div>
             </div>
             <div class="col-md-4">
+                
                 <div class="form-grup">
                     <h5>Vacunas</h5>
-                    <select class="select2" multiple="multiple" name="vacunas" data-placeholder="Select a State" style="width: 100%;">
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                    <select class="select2" multiple="multiple" name="vacunas[]" data-placeholder="Select a State" style="width: 100%;">
+                        @foreach ($vacunas as $vac)
+                            <option value="{{$vac->id}}">{{$vac->valor}}</option>
+                        @endforeach
                       </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-grup">
                     <h5>Alergias</h5>
-                    <select class="select2" multiple="multiple" name="alergias" data-placeholder="Select a State" style="width: 100%;">
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                    <select class="select2" multiple="multiple" name="alergias[]" data-placeholder="Select a State" style="width: 100%;">
+                        @foreach ($alergias as $alr)
+                            <option value="{{$alr->id}}">{{$alr->valor}}</option>
+                        @endforeach
                       </select>
                 </div>
             </div>

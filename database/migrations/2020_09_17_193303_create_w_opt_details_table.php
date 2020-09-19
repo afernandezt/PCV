@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkersTable extends Migration
+class CreateWOptDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateWorkersTable extends Migration
      */
     public function up()
     {
-        Schema::create('workers', function (Blueprint $table) {
+        Schema::create('w_opt_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('job');
-            $table->integer('zone');
-            $table->integer('institution');
-            $table->string('medic');
-            $table->string('name');
-            $table->string('direccion');
-            $table->string('edad');
+            $table->integer('id_entidad');
+            $table->string("valor");
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateWorkersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workers');
+        Schema::dropIfExists('w_opt_details');
     }
 }

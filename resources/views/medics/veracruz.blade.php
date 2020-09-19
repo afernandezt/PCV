@@ -10,25 +10,14 @@
           <th>Clave</th>
           <th>Nombre</th>
           <th>Puesto</th>
-          <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
           @foreach ($ver_work as $ver)
           <tr>
             <td>{{$ver->nomina}}</td>
-            <td>{{$ver->name}}</td>
+          <td><a href="/workers/show/{{$ver->id}}">{{$ver->name}}</a></td>
             <td>{{$ver->getJob->puesto}}</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn  btn-default">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="btn  btn-default">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>              
-            </td>
           </tr>
         @endforeach
         </tbody>
@@ -37,7 +26,6 @@
           <th>Clave</th>
           <th>Nombre</th>
           <th>Puesto</th>
-          <th>Acciones</th>
         </tr>
         </tfoot>
       </table>
