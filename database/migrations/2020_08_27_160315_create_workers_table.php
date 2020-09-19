@@ -20,6 +20,7 @@ class CreateWorkersTable extends Migration
             $table->integer('institution');
             $table->string('medic');
             $table->string('name');
+            $table->string('nomina');
             $table->timestamps();
         });
     }
