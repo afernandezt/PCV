@@ -1,5 +1,4 @@
 <div id="accordion">
-    <input type="hidden" class='input-galery' name="galerie" value="">
     <h6>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
         <i class="fas fa-plus"></i> Detalles

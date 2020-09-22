@@ -108,18 +108,27 @@
       Dropzone.autoDiscover = false;
     $(document).ready(function(){
         $(".dropzone").dropzone({
-        maxFiles: 2000,
+        maxFiles: 50,
+        maxFilesize: 2, // MB
+        addRemoveLinks: true,
         url: "{{route('temperal_galery')}}",
         acceptedFiles: "image/jpeg,image/png,image/gif",
         headers: {
             'X-CSRF-TOKEN': "{{ csrf_token() }}"
         },
         success: function (file, response) {
-            oldValue = $('.input-galery').val();
+          console.log(file.xhr.response);
+            /*oldValue = $('.input-galery').val();
             var arr = oldValue === "" ? [] : oldValue.split(',');
             arr.push(response);
             var newValue = arr.join(',');
-            jQuery(".input-galery").val(newValue);          
+            jQuery(".input-galery").val(newValue);*/     
+            //$('form#example-advanced-form').append('<input type="hidden" id="doc-'+i+'" class="'+data[0]+'" name="document[]" value="'+file.name+';'+file.type+';name">');
+            //uploadedDocumentMap[file.name] = response.name
+        },
+        removedfile: function (file) {
+          console.log(file.xhr.response);
+          file.previewElement.remove()
         }
         })
       })

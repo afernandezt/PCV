@@ -170,11 +170,10 @@
                             <tbody>
                                @foreach ($trabajador->getDocs as $doc)
                                 <tr>
-                                    <td>{{$doc->route}}</td>
-                                <td><a href="/workers/{{$trabajador->id}}/{{$doc->route}}">Abrir</a></td>
+                                    <td></td>
+                                    <td><a href="/workers/{{$trabajador->id}}/{{$doc->route}}">Abrir</a></td>
                                 </tr>
-                               @endforeach
-                                
+                               @endforeach                                
                             </tbody>
                         </table>
                     </div>

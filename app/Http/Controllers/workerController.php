@@ -87,8 +87,7 @@ class WorkerController extends Controller
                 }
             }
         }
-        return redirect('/workers/show/'.$worker->id);
-            
+        return redirect('/workers/show/'.$worker->id);            
     }
     public function add(){
         $zona = Zone::all();
