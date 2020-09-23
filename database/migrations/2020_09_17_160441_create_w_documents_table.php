@@ -17,6 +17,7 @@ class CreateWDocumentsTable extends Migration
             $table->id();
             $table->integer("id_worker");
             $table->string("route");
+            $table->string("name");
             $table->timestamps();
         });
     }

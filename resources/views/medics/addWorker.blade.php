@@ -112,23 +112,23 @@
         maxFilesize: 2, // MB
         addRemoveLinks: true,
         url: "{{route('temperal_galery')}}",
-        acceptedFiles: "image/jpeg,image/png,image/gif",
+        acceptedFiles: "image/jpeg,image/png",
         headers: {
             'X-CSRF-TOKEN': "{{ csrf_token() }}"
         },
         success: function (file, response) {
-          console.log(file.xhr.response);
-            /*oldValue = $('.input-galery').val();
-            var arr = oldValue === "" ? [] : oldValue.split(',');
-            arr.push(response);
-            var newValue = arr.join(',');
-            jQuery(".input-galery").val(newValue);*/     
-            //$('form#example-advanced-form').append('<input type="hidden" id="doc-'+i+'" class="'+data[0]+'" name="document[]" value="'+file.name+';'+file.type+';name">');
-            //uploadedDocumentMap[file.name] = response.name
+          var data = response.replace(' ', '_');
+          data = data.split(".");
+            $("#addworker").append('<input type="hidden" class="'+data[0]+'" name="document[]" value="'+response+','+file.name+'">');
         },
         removedfile: function (file) {
-          console.log(file.xhr.response);
-          file.previewElement.remove()
+          file.previewElement.remove();
+          var str = file.xhr.response.split("_");
+          str = str[0]+'_'+file.name;
+          str = str.split('"').join("");
+          str = str.split(" ").join("_")
+          let s = str.split(".");
+          let x = $('#addworker').find('input.' + s[0]).remove();
         }
         })
       })

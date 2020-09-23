@@ -16,7 +16,7 @@ class CreateRollsTable extends Migration
         Schema::create('rolls', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->json('permisions');
+            $table->json('permisions')->nullable();
             $table->timestamps();
         });
     }

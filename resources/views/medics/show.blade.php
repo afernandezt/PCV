@@ -163,15 +163,13 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Ver</th>
+                                    <th>Archivo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                @foreach ($trabajador->getDocs as $doc)
                                 <tr>
-                                    <td></td>
-                                    <td><a href="/workers/{{$trabajador->id}}/{{$doc->route}}">Abrir</a></td>
+                                <td><a href="/workers/{{$trabajador->id}}/{{$doc->route}}">{{$doc->name}}</a></td>
                                 </tr>
                                @endforeach                                
                             </tbody>

@@ -70,22 +70,25 @@ class WorkerController extends Controller
             }
         }
         //Save Gallery
-        if($request->galerie != ''){
-            $photos = explode(',',$request->galerie);
-            foreach($photos as $photo){
-                $temp_path = storage_path('tmp/uploads/'.$photo);
-                $new_path = public_path('workers/'.$worker->id);
-                if (!file_exists($new_path)) {
-                    mkdir($new_path, 0777, true);
-                }
-                rename($temp_path, $new_path.'/'.$photo);
-                if(file_exists($new_path.'/'.$photo)){
-                    $doc = new w_document;
-                    $doc->route = $photo;
-                    $doc->id_worker = $worker->id;
-                    $doc->save();
-                }
+        if($request->document != ''){
+            foreach ($request->document as $docs) {
+                $photo = explode(',',$docs);
+                    $temp_path = storage_path('tmp/uploads/'.$photo[0]);
+                    $new_path = public_path('workers/'.$worker->id);
+                    if (!file_exists($new_path)) {
+                        mkdir($new_path, 0777, true);
+                    }
+                    rename($temp_path, $new_path.'/'.$photo[0]);
+                    if(file_exists($new_path.'/'.$photo[0])){
+                        $doc = new w_document;
+                        $doc->route = $photo[0];
+                        $doc->id_worker = $worker->id;
+                        $doc->name = $photo[1];
+                        $doc->save();
+                    }
+                
             }
+           
         }
         return redirect('/workers/show/'.$worker->id);            
     }
