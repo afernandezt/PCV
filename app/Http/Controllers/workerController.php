@@ -184,7 +184,7 @@ class WorkerController extends Controller
         $worker->save();
 
         //comorbidad
-        if ($request->comorbidad) {            
+        if ($request->comorbidad) {
             $com  = w_comorbidad::where("id_worker",$id)
                                 ->pluck('comorbidad')
                                 ->toArray();
