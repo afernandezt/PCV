@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('logout', 'Auth\LoginController@logout', function () {
+    return abort(404);
+})->name('logout');
 
 //Trabajadores
 Route::resource('worker', 'WorkerController');

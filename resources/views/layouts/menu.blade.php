@@ -9,7 +9,7 @@
                 <p>Inicio</p>
             </a>
         </li>
-        <li class="nav-item has-treeview menu-open">
+        <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -20,13 +20,13 @@
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('workers') }}" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
+                        <i class="fas fa-address-card nav-icon"></i>
                         <p>Trabajadores</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('addWorker') }}" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
+                        <i class="fas fa-user-plus nav-icon"></i>
                         <p>Agregar</p>
                     </a>
                 </li>
