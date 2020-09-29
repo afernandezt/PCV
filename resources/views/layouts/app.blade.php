@@ -78,7 +78,6 @@
                 </div>
                 <!-- /.sidebar -->
             </aside>
-            <span>asdasd</span>
             <div class="content-wrapper">
                 @yield('content')
             </div>

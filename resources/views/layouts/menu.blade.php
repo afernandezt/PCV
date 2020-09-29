@@ -13,13 +13,13 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                    Medico
+                    Trabajadores
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('workers') }}" class="nav-link">
+                    <a href="/worker" class="nav-link">
                         <i class="fas fa-address-card nav-icon"></i>
                         <p>Trabajadores</p>
                     </a>
@@ -32,6 +32,15 @@
                 </li>
             </ul>
         </li>
+       @admin
+        <li class="nav-item">
+            <a href="/users" class="nav-link">
+                <i class="fas fa-user nav-icon"></i>
+                <p>Usuarios</p>
+            </a>
+        </li>
+        @endadmin
+        
     </ul>
 
 </nav>

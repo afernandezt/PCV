@@ -26,7 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $traj = new Worker();
         $trabajadores = User::all();
         $us = Auth::user();
         return view('home', compact('trabajadores', 'us'));
