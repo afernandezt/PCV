@@ -168,8 +168,6 @@ class WorkerController extends Controller
     }
     public function update(Request $request, $id)
     {
-        //dd($id);
-        //dd($request->comorbidad);
         $worker = Worker::find($id);
         $worker->job = $request->puesto;
         $worker->zone = $request->zona;
