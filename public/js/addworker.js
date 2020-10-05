@@ -9,7 +9,8 @@ $(document).ready(function(){
             },
             nomina: {
               required: true,
-              minlength: 5
+              minlength: 5,
+              maxlength: 6
             },
             puesto: {
               required: true
@@ -20,8 +21,20 @@ $(document).ready(function(){
             edad: {
               required: true
             },
+            sexo: {
+              required: true
+            },
             zona: {
               required: true,
+            },
+            altura: {
+              required: true
+            },
+            peso: {
+              required: true
+            },
+            imc: {
+              required: true
             },
             covid: {
               required: true
@@ -29,10 +42,33 @@ $(document).ready(function(){
           },
           messages: {
             nomina: {
-              required: "Please provide a password",
-              minlength: "Your password must be at least 5 characters long"
+              required: "Por favor complete el campo",
+              minlength: "ingrese la clave correcta"
             },
-            terms: "Please accept our terms"
+            name: {
+              required: "Ingrese el nombre completo del trabajador",
+            },
+            puesto: {
+              required: "seleccione un puesto para el trabajador"
+            },
+            direccion: {
+              required: "Ingrese la direccion del tranajador"
+            },
+            edad: {
+              required: "Ingrese la edad del trabajador"
+            },
+            sexo: {
+              required: "seleccione el sexo del trabajador"
+            },
+            zona: {
+              required: "Seleccione la zona del trabajador",
+            },
+            altura: {
+              required: "Ingrese la altura del trabajador"
+            },
+            peso: {
+              required: "ingrese el peso dle trabajador"
+            }
           },
           errorElement: 'span',
           errorPlacement: function (error, element) {
@@ -46,4 +82,31 @@ $(document).ready(function(){
             $(element).removeClass('is-invalid');
           }
         });
+        $("#calc").click(function(){
+            var alt = parseFloat($("#altura").val());
+            var ps = parseFloat($("#peso").val());
+            var resp = ps / (alt*alt);
+            if($("#sexo").val() == "H"){
+                if(resp.toFixed(2) < 18.5){
+                    $("#obesidad").val("Desnutricion");
+                }else if(resp.toFixed(1) >= 18.5 && resp.toFixed(1) <= 24.9){
+                    $("#obesidad").val("Normal");
+                }else if(resp.toFixed(1) >= 25 && resp.toFixed(1) <= 29.9){
+                    $("#obesidad").val("Sobrepeso");
+                }else if(resp.toFixed(1) >= 30 && resp.toFixed(1) <= 34.9){
+                    $("#obesidad").val("Obesidad Tipo 1");
+                }else if(resp.toFixed(1) >= 35 && resp.toFixed(1) <= 39.9){
+                    $("#obesidad").val("Obesidad Tipo 2");
+                }else if(resp.toFixed(2) >= 40 && resp.toFixed(2) < 49.9){
+                    $("#obesidad").val("Obesidad Tipo 3");
+                }else if(resp.toFixed(1) >= 50){
+                    $("#obesidad").val("Obesidad Extrema");
+                }
+            }else{
+
+            }
+            
+            $("#imc").val(resp.toFixed(2));
+            
+        })
 })

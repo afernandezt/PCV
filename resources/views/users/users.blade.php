@@ -39,10 +39,12 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($usr as $us)
+                                    <tr>
                                         <td>{{$us->nombre}}</td>
                                         <td>{{$us->email}}</td>
                                         <td>{{$us->puesto}}</td>
                                         <td>{{$us->roll}}</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>

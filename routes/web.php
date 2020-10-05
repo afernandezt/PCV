@@ -39,3 +39,7 @@ Route::post('galery_temperal', 'WorkerController@galery_temperal')->name('temper
 
 //users
 Route::get('/users','UserController@index');
+
+//Reportes
+Route::get('/search', 'SearchController@index');
+Route::get('/search/workers', 'SearchController@search')->name('showResult');

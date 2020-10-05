@@ -17,11 +17,12 @@ class CreateWorkersTable extends Migration
             $table->id();
             $table->integer('job');
             $table->integer('zone');
-            $table->integer('institution');
-            $table->string('medic');
             $table->string('name');
             $table->string('direccion');
             $table->string('edad');
+            $table->string('peso');
+            $table->string('altura');
+            $table->string('sexo');
             $table->timestamps();
         });
     }

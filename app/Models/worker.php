@@ -7,6 +7,9 @@ use App\BaseStatus;
 
 class worker extends Model
 {
+    public function details(){
+        return $this->hasOne(w_med_details::class,'id_worker','id');
+    }
     public function getJob(){
         return $this->hasOne(w_puesto::class,'id','job');
     }

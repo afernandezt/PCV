@@ -5,7 +5,7 @@
            with font-awesome or any other icon font library -->
         <li class="nav-item">
             <a href="{{ route('home') }}" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
+                <i class="fas fa-home nav-icon"></i>
                 <p>Inicio</p>
             </a>
         </li>
@@ -32,6 +32,12 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="/search" class="nav-link">
+                <i class="fas fa-search-plus nav-icon"></i>
+                <p>Reportes</p>
+            </a>
+        </li>
        @admin
         <li class="nav-item">
             <a href="/users" class="nav-link">
@@ -40,6 +46,7 @@
             </a>
         </li>
         @endadmin
+        
         
     </ul>
 

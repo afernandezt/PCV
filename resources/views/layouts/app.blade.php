@@ -11,6 +11,11 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    <!--Preloader-->
+<div class="preloader-it">
+    <div class="la-anim-1"></div>
+</div>
+<!--/Preloader-->
     <div id="app">
         <div class="wrapper">
 
@@ -99,9 +104,20 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
+    <script src="{{ asset('js/init.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    
     @yield('scripts')
     @yield('subscripts')
+    <script>
+        $(document).ready(function(){
+            var $preloader = $(".preloader-it > .la-anim-1");
+            $preloader.addClass('la-animate');
+        });
+        $(window).on("load",function(){
+            $(".preloader-it").delay(2000).fadeOut("slow");
+        })
+    </script>
 </body>
 
 </html>

@@ -13,6 +13,7 @@ use App\Models\w_medico;
 use App\Models\w_vacuna;
 use App\Models\w_document;
 use App\Models\w_opt_detail;
+use App\Models\w_med_detail;
 
 class WorkerController extends Controller
 {
@@ -40,13 +41,20 @@ class WorkerController extends Controller
         $worker->nomina = $request->nomina;
         $worker->direccion = $request->direccion;
         $worker->edad = $request->edad;
+        $worker->peso = $request->peso;
+        $worker->altura = $request->altura;
+        $worker->sexo = $request->sexo;
+        $worker->save();
+        $d_worker = new w_med_detail();
+        $d_worker->id_worker = $worker->id;
+        $d_worker->imc = $request->imc;
+        $d_worker->obesidad = $request->obesidad;
         if (isset($request->medico)) {
-            $worker->medic = $request->medico;
+            $d_worker->medic = $request->medico;
         }
         if (isset($request->inst)) {
-            $worker->institution = $request->inst;
+            $d_worker->institution = $request->inst;
         }
-        $worker->save();
         //comorbidad
         if ($request->comorbidad) {
             foreach ($request->comorbidad as $comorbid) {
@@ -175,13 +183,21 @@ class WorkerController extends Controller
         $worker->nomina = $request->nomina;
         $worker->direccion = $request->direccion;
         $worker->edad = $request->edad;
+        $worker->peso = $request->peso;
+        $worker->altura = $request->altura;
+        $worker->sexo = $request->sexo;
+        $worker->save();
+
+        //Detalles medicos de trabajador
+        $d_worker = w_med_detail::where('id_worker',$id);
+        $d_worker->imc = $request->imc;
+        $d_worker->obesidad = $request->obesidad;
         if (isset($request->medico)) {
-            $worker->medic = $request->medico;
+            $d_worker->medic = $request->medico;
         }
         if (isset($request->inst)) {
-            $worker->institution = $request->inst;
+            $d_worker->institution = $request->inst;
         }
-        $worker->save();
 
         //comorbidad
         if ($request->comorbidad) {

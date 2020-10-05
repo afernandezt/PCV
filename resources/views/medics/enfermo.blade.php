@@ -7,7 +7,7 @@
     <div id="collapseOne" class="panel-collapse collapse in">
         <div class="card-body">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="insti">institucion</label>
                         <select class="form-control select2" id="insti" name="inst" style="width: 100%;">
@@ -18,7 +18,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="medico">medico</label>
                         <select class="form-control select2" id="medico" name="medico" style="width: 100%;">
@@ -27,6 +27,12 @@
                                 <option value="{{ $m->id }}">{{ $m->medico }}</option>
                             @endforeach
                         </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="medico">Cuerpo</label>
+                       <input type="text" class="form-control" name="obesidad" id="obesidad" disabled>
                     </div>
                 </div>
             </div>
