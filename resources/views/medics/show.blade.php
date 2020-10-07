@@ -54,10 +54,26 @@
                             <h5>Detalle Medico</h5>
                             <div class="row">
                                 <div class="col-md-6">
+                                    <span><strong>Altura: </strong></span><br>
+                                    <span><strong>Peso: </strong></span><br>
+                                    <span><strong>IMC: </strong></span><br>
+                                    <span><strong>Obesidad: </strong></span><br>
                                     <span><strong>Insituto: </strong></span><br>
                                     <span><strong>Medico: </strong></span>
                                 </div>
                                 <div class="col-md-6">
+                                    <span>
+                                        {{$trabajador->altura}} Mtrs.
+                                    </span><br>
+                                    <span>
+                                        {{$trabajador->peso}} Kg.
+                                    </span><br>
+                                    <span>
+                                        {{$trabajador->details->imc}} 
+                                    </span><br>
+                                    <span>
+                                        {{$trabajador->details->obesidad}} 
+                                    </span><br>
                                     <span>
                                         @if (isset($trabajador->getInst->instis))
                                             {{ $trabajador->getInst->instis }}@endif

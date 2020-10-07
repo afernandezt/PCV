@@ -12,10 +12,10 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <!--Preloader-->
-<div class="preloader-it">
+<!-- <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!--/Preloader-->
+/Preloader-->
     <div id="app">
         <div class="wrapper">
 
@@ -76,7 +76,7 @@
                             <img src="{{ asset('images/avatar.jpg') }}" class="img-circle elevation-2" alt="">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                            <a href="#" class="d-block">{{ Auth::user()->nombre }}</a>
                         </div>
                     </div>
                     @include('layouts.menu')
@@ -115,7 +115,7 @@
             $preloader.addClass('la-animate');
         });
         $(window).on("load",function(){
-            $(".preloader-it").delay(2000).fadeOut("slow");
+            $(".preloader-it").delay(1000).fadeOut("slow");
         })
     </script>
 </body>
