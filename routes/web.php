@@ -39,7 +39,10 @@ Route::post('galery_temperal', 'WorkerController@galery_temperal')->name('temper
 
 //users
 Route::get('/users','UserController@index');
+Route::get('/users/add', 'UserController@add');
+Route::post('/users/save', 'UserController@save')->name('saveUser');
 
 //Reportes
 Route::get('/search', 'SearchController@index');
-Route::get('/search/workers', 'SearchController@search')->name('showResult');
+Route::post('/search/workers', 'SearchController@search')->name('showResult');
+Route::post('/print','SearchController@print')->name('print');

@@ -11,8 +11,8 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-    <!--Preloader-->
-<!-- <div class="preloader-it">
+    <!--Preloader-
+ <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
 /Preloader-->
@@ -104,7 +104,6 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="{{ asset('js/init.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     
     @yield('scripts')

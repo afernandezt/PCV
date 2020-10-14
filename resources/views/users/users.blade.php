@@ -57,6 +57,7 @@
                                 </tfoot>
                             </table>
                         </div>
+                        <a href="/users/add" type="button" class="float-right btn btn-primary">Agregar</a>
                     </div>
                 </div>
 

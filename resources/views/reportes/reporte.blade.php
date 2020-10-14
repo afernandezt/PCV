@@ -25,27 +25,181 @@
                     <span class="card-title">Busqueda</span>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="{{ route('showResult') }}" method="POST">
+                        @csrf
                         <div class="row">
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="Nombre, Nomina">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="field1">Nombre, Nomina</label>
+                                    <input type="text" name="field" id="field1" class="form-control" placeholder="Nombre, Nomina">
+                                </div>
+                                
                             </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="cuerpo">cuerpo</label>
+                                    <select name="cuerpo" id="cuerpo" class="form-control">
+                                        <option value="">Seleccione un Tipo de cuerpo</option>
+                                        <option value="1">Desnutricion</option>
+                                        <option value="2">Normal</option>
+                                        <option value="3">Obesidad Tipo 1</option>
+                                        <option value="4">Obesidad Tipo 2</option>
+                                        <option value="5">Obesidad Tipo 3</option>
+                                        <option value="6">Obesidad Tipo 4</option>
+                                    </select>
+                                </div>
+                                
                             </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="puesto">Puesto</label>
+                                    <select name="puesto" id="puesto" class="form-control">
+                                        <option value="">Puesto del Trabajador</option>
+                                        @foreach ($puesto as $p)
+                                            <option value="{{$p->id}}">{{$p->puesto}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
+                       <div class="row">
+                           <div class="col-md-12">
+                                <h2>Enfermedades</h2>
+                           </div>
+                       </div>
+                        <div class="row">                            
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="comorbidad">Comorbidades</label>
+                                    <select name="comorbidad" id="comorbidad" class="form-control">
+                                        <option value="">Seleccione Comorbidad</option>
+                                        @foreach ($comorbidad as $c)
+                                            <option value="{{$c->id}}">{{$c->valor}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="vacunas">vacunas</label>
+                                    <select name="vacunas" id="vacunas" class="form-control">
+                                        <option value="">Seleccione Vacuna</option>
+                                        @foreach ($vacuna as $v)
+                                            <option value="{{$v->id}}">{{$v->valor}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="alergia">Alergias</label>
+                                    <select name="alergia" id="alergia" class="form-control">
+                                        <option value="">Seleccione Alergia</option>
+                                        @foreach ($alergia as $a)
+                                            <option value="{{$a->id}}">{{$a->valor}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="search" class="btn btn-primary">Buscar</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    @if(isset($trabajador))
+   <section class="content">
+       <div class="content-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Resultado</span>
+                            <button type="button" id="print" class="float-right btn btn-primary">Buscar</button>
+                        </div>
+                        <div class="card-body">
+                            <div id="accordion">
+                                @foreach ($trabajador as $trab)
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$trab->id}}">
+                                                    <i class="fas fa-plus"></i> {{$trab->name}}
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse{{$trab->id}}" class="panel-collapse collapse in">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <span><strong>Nomina</strong> {{$trab->nomina}}</span>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <span><strong>Trabajador</strong> {{$trab->name}}</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span><strong>Edad</strong> {{$trab->edad}}</span>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span><strong>Puesto</strong> {{$trab->getJob->puesto}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <span><strong>zona</strong> {{$trab->getZone->name}}</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span><strong>Altura</strong> {{$trab->altura}}</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span><strong>Peso</strong> {{$trab->peso}}</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span><strong>IMC</strong> {{$trab->details->imc}}</span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span><strong>Instituto</strong> {{$trab->details->institucion}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <span><strong>Medico</strong> {{$trab->details->medic}}</span>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span><strong>Alergias</strong> dato</span>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span><strong>Comorbidades</strong> dato</span>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <span><strong>Vacunas</strong> dato</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+   </section>
+   @endif
 @endsection
 @section('scripts')
-
+<script>
+    $('#print').click(function(){
+        $.ajax({
+            method: "POST",
+            url: '{{ route('print') }}'',
+            data: {{$trabajador}},
+            success: function (resp){
+                
+            }
+        });
+    })
+</script>
 @endsection
