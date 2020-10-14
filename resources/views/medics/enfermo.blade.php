@@ -32,7 +32,15 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="medico">Cuerpo</label>
-                       <input type="text" class="form-control" name="obesidad" id="obesidad" disabled>
+                        <select name="cuerpo" id="cuerpo" class="form-control" disabled>
+                            <option value="">Seleccione un Tipo de cuerpo</option>
+                            <option value="1">Desnutricion</option>
+                            <option value="2">Normal</option>
+                            <option value="3">Obesidad Tipo 1</option>
+                            <option value="4">Obesidad Tipo 2</option>
+                            <option value="5">Obesidad Tipo 3</option>
+                            <option value="6">Obesidad Tipo 4</option>
+                        </select>
                     </div>
                 </div>
             </div>

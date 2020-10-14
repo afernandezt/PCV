@@ -45,4 +45,4 @@ Route::post('/users/save', 'UserController@save')->name('saveUser');
 //Reportes
 Route::get('/search', 'SearchController@index');
 Route::post('/search/workers', 'SearchController@search')->name('showResult');
-Route::post('/print','SearchController@print')->name('print');
+Route::post('/print/{worker}','SearchController@print')->name('print');

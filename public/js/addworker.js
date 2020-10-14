@@ -86,26 +86,19 @@ $(document).ready(function(){
             var alt = parseFloat($("#altura").val());
             var ps = parseFloat($("#peso").val());
             var resp = ps / (alt*alt);
-            if($("#sexo").val() == "H"){
-                if(resp.toFixed(2) < 18.5){
-                    $("#obesidad").val("Desnutricion");
-                }else if(resp.toFixed(1) >= 18.5 && resp.toFixed(1) <= 24.9){
-                    $("#obesidad").val("Normal");
-                }else if(resp.toFixed(1) >= 25 && resp.toFixed(1) <= 29.9){
-                    $("#obesidad").val("Sobrepeso");
-                }else if(resp.toFixed(1) >= 30 && resp.toFixed(1) <= 34.9){
-                    $("#obesidad").val("Obesidad Tipo 1");
-                }else if(resp.toFixed(1) >= 35 && resp.toFixed(1) <= 39.9){
-                    $("#obesidad").val("Obesidad Tipo 2");
-                }else if(resp.toFixed(2) >= 40 && resp.toFixed(2) < 49.9){
-                    $("#obesidad").val("Obesidad Tipo 3");
-                }else if(resp.toFixed(1) >= 50){
-                    $("#obesidad").val("Obesidad Extrema");
-                }
-            }else{
-
-            }
-            
+            if(resp.toFixed(2) < 18.5){
+                $("#cuerpo").val("1");
+            }else if(resp.toFixed(1) >= 18.5 && resp.toFixed(1) <= 24.9){
+                $("#cuerpo").val("2");
+            }else if(resp.toFixed(1) >= 25 && resp.toFixed(1) <= 29.9){
+                $("#cuerpo").val("3");
+            }else if(resp.toFixed(1) >= 30 && resp.toFixed(1) <= 34.9){
+                $("#cuerpo").val("4");
+            }else if(resp.toFixed(1) >= 35 && resp.toFixed(1) <= 39.9){
+                $("#cuerpo").val("5");
+            }else if(resp.toFixed(2) >= 40 && resp.toFixed(2) < 49.9){
+                $("#cuerpo").val("6");
+            }          
             $("#imc").val(resp.toFixed(2));
             
         })

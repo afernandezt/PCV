@@ -37,36 +37,19 @@
                                             value="{{ $worker->name }}" placeholder="Nombre Completo">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="nomina">Numero de Nomina</label>
                                         <input type="text" name="nomina" class="form-control" id="nomina"
                                             value="{{ $worker->nomina }}" placeholder="nomina">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label for="name">Direccion</label>
-                                        <input type="text" name="direccion" class="form-control" id="direccion"
-                                            value="{{ $worker->direccion }}" placeholder="Direccion">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="name">Edad</label>
-                                        <input type="text" name="edad" class="form-control" id="edad" placeholder="Edad"
-                                            value="{{ $worker->edad }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="puesto">Puesto</label>
                                         <select class="form-control select2" id="puesto" name="puesto" placeholder="Puesto"
                                             style="width: 100%;">
+                                            <option value="">Seleccionar Puesto</option>
                                             @foreach ($puesto as $p)
                                                 @if ($worker->getJob->id == $p->id)
                                                     <option value="{{ $p->id }}" selected>{{ $p->puesto }}</option>
@@ -77,7 +60,16 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Direccion</label>
+                                        <input type="text" name="direccion" class="form-control" id="direccion"
+                                            value="{{ $worker->direccion }}" placeholder="Direccion">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="name">Zona</label>
                                         <select class="form-control select2" id="zona" name="zona" placeholder="Zona"
@@ -92,13 +84,47 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="name">Covid</label>
-                                        <select class="form-control" id="covid" placeholder="covid" style="width: 100%;">
-                                            <option value="0">Negativo</option>
-                                            <option value="1">Positivo</option>
+                                        <label for="name">Sexo</label>
+                                        <select name="sexo" class="form-control" id="sexo">
+                                            <option value="">Seleccionar Sexo</option>
+                                            <option value="H">Hombre</option>
+                                            <option value="M">Mujer</option>
                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="name">Edad</label>
+                                        <input type="text" name="edad" class="form-control" id="edad" placeholder="Edad"
+                                            value="{{ $worker->edad }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="name">Altura</label>
+                                        <input type="text" name="altura" class="form-control altura" id="altura"
+                                            value="{{ $worker->altura }}" placeholder="Mts">
+                                    </div>
+                                </div> 
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="name">Peso</label>
+                                        <input type="text" name="peso" class="form-control numeros" id="peso"
+                                            value="{{ $worker->peso }}" placeholder="Klg">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="name">IMC</label>
+                                    <div class="form-group input-group input-group">
+                                        <input type="text" name="imc" class="form-control numero" id="imc" placeholder="IMC"
+                                            value="{{ $worker->details->imc }}" disabled>
+                                        <span class="input-group-append">
+                                            <button type="button" id="calc" class="btn btn-info btn-flat">Calcular!</button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +137,7 @@
                                 <div id="collapseOne" class="panel-collapse collapse in">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="insti">institucion</label>
                                                     <select class="form-control select2" id="insti" name="inst"
@@ -130,7 +156,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="medico">medico</label>
                                                     <select class="form-control select2" id="medico" name="medico"
@@ -146,6 +172,20 @@
                                                                 @endif
                                                             @endif
                                                         @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="medico">Cuerpo</label>
+                                                    <select name="cuerpo" id="cuerpo" class="form-control" disabled>
+                                                        <option value="">Seleccione un Tipo de cuerpo</option>
+                                                        <option value="1">Desnutricion</option>
+                                                        <option value="2">Normal</option>
+                                                        <option value="3">Obesidad Tipo 1</option>
+                                                        <option value="4">Obesidad Tipo 2</option>
+                                                        <option value="5">Obesidad Tipo 3</option>
+                                                        <option value="6">Obesidad Tipo 4</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -222,7 +262,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" id="save" class="float-right btn btn-primary">Submit</button>
+                        <button type="submit" id="save" class="float-right btn btn-primary">Actualizar</button>
                     </form>
                 </div>
             </div>

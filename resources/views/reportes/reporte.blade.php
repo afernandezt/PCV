@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('style')
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 @endsection
 @section('content')
     <section class="content-header">
@@ -116,7 +121,7 @@
                     <div class="card">
                         <div class="card-header">
                             <span class="card-title">Resultado</span>
-                            <button type="button" id="print" class="float-right btn btn-primary">Buscar</button>
+                            <button type="submit" id="print" class="float-right btn btn-primary">Buscar</button>                                               
                         </div>
                         <div class="card-body">
                             <div id="accordion">
@@ -187,19 +192,25 @@
             </div>
        </div>
    </section>
+
+   <div id="report" class="hidden">
+        @include('reportes.impresion')
+   </div>
    @endif
 @endsection
 @section('scripts')
-<script>
-    $('#print').click(function(){
-        $.ajax({
-            method: "POST",
-            url: '{{ route('print') }}'',
-            data: {{$trabajador}},
-            success: function (resp){
-                
-            }
-        });
-    })
-</script>
+    <script>
+        $('#print').click(function(){
+            var div = $('#report').html();
+            var newWin=window.open('','Print-Window');
+            newWin.document.open();
+            newWin.document.write('<html><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></head><body onload="window.print()">'+div+'</body></html>');
+            newWin.document.close();
+            setTimeout(function(){newWin.close();},10);
+        })
+        var f = new Date();
+        var date = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+        $('#fecha').html('Fecha: '+date);
+
+    </script>
 @endsection
