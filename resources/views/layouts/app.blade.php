@@ -76,7 +76,7 @@
                             <img src="{{ asset('images/avatar.jpg') }}" class="img-circle elevation-2" alt="">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">{{ Auth::user()->nombre }}</a>
+                        <a href="#" class="d-block">{{ Auth::user()->nombre }}</a>
                         </div>
                     </div>
                     @include('layouts.menu')
